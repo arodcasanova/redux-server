@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {List, Map} from 'immutable';
 
 function setState(state, newState) {
@@ -29,4 +30,19 @@ export default function(state = Map(), action) {
 	}
 	
 	return state; 
+=======
+import {setEntries, next, vote, INITIAL_STATE} from './core';
+
+export default function reducer(state = INITIAL_STATE, action) {
+	switch(action.type) {
+		case 'SET_ENTRIES': 
+			return setEntries(state, action.entries);
+		case 'NEXT':
+			return next(state);
+		case 'VOTE':
+			return state.update('vote', 
+								voteState => vote(voteState, action.entry));
+		return state;
+	}
+>>>>>>> 004fece4e61ea6152bbd01de355ca97145b27d8c
 }
